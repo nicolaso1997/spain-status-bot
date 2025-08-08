@@ -16,9 +16,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 URL = 'https://immi.homeaffairs.gov.au/what-we-do/whm-program/status-of-country-caps'
 LAST_STATUS_FILE = 'last_status.txt'
 
-SENDER_EMAIL = 'nicolaso1997@gmail.com'         # Replace with your Gmail address
-SENDER_PASSWORD = 'iciq yjft qtaz qqdv'                            # 🔐 Add your Gmail app password here
-RECEIVER_EMAIL = 'nicolaso1997@gmail.com'       # Where you want to receive the alert
+import os
+
+SENDER_EMAIL = os.environ.get("EMAIL_USERNAME")
+SENDER_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+RECEIVER_EMAIL = SENDER_EMAIL
 
 
 def get_spain_status():
@@ -126,3 +128,4 @@ check_for_update()
 while True:
     schedule.run_pending()
     time.sleep(60)
+
